@@ -2,7 +2,7 @@
 # 1. Tokenize contents of book_sample.txt
 # 2. Perform frequency analysis on word appearances
 
-import sys, random, requests, re
+import sys, random, requests, re, json
 
 def tokenize_text(article_text):
     split_text = article_text.split()
@@ -42,6 +42,7 @@ def create_word_list(filename):
 
 if __name__ == '__main__':
     # Perform tokenization + word frequency analysis
-    output_file_read = open('book_sample.txt', 'r')
+    output_file_read = open('~/cancel_fall2019/cancel_tweets_clean_no_at_no_url.txt', 'r')
     word_dict = tokenize_text(output_file_read.read())
-    print(word_dict)
+    with open("~/cancel_fall2019/tokenize_cancel_tweets.json",'w') as newfile:
+        newfile.write(json.dumps(word_dict))
